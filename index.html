@@ -10,6 +10,7 @@
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
             overflow-y: auto;
+            background-color: #000;
         }
 
         header {
@@ -18,7 +19,7 @@
             left: 0;
             width: 100%;
             background-color: #000;
-            padding: 1em 20px; /* Add padding to the right side */
+            padding: 1em 10px;
             color: #fff;
             display: flex;
             justify-content: space-between;
@@ -68,14 +69,14 @@
             font-family: 'Roboto', sans-serif;
             color: #fff;
             margin-bottom: 20px;
-            z-index: 1; /* Ensure the main heading is above the image */
+            z-index: 1;
         }
 
         .image-container {
             position: relative;
             max-width: 85%;
             margin-bottom: 20px;
-            z-index: 0; /* Keep the image behind the main heading */
+            z-index: 0;
         }
 
         .animated-caption {
@@ -121,8 +122,8 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
+            background-color: rgba(255, 255, 240, 0.7); /* Translucent Ivory Color */
+            color: #000;
         }
 
         .flashcard img {
@@ -153,14 +154,10 @@
             color: #fff;
         }
 
-        #stopButton {
-            background-color: #e74c3c;
-            color: #fff;
-        }
-
         #output {
             font-size: 18px;
             margin-top: 20px;
+            color: #000; /* Set text color to black */
         }
 
         body::before {
@@ -170,11 +167,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(-45deg, #3498db, #2ecc71, #e74c3c, #3498db);
+            background: linear-gradient(-45deg, #3498db, #001f3f, #000);
             background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            transition: background 5s ease-in-out;
+            animation: ripple 9s linear infinite;
             z-index: -1;
+        }
+
+        @keyframes ripple {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes gradient {
@@ -219,37 +227,32 @@
                             <p>Welcome to Dr. Bot, your intelligent healthcare assistant designed to provide personalized medical consultancy and tips. With Dr. Bot, you can conveniently record your voice and receive expert advice from qualified doctors. Whether you have health-related concerns, need medical tips, or seek contact information for healthcare professionals, Dr. Bot is here to assist you. Experience the convenience of virtual healthcare at your fingertips. Your health matters, and Dr. Bot is here to help you on your wellness journey.</p>
                             <section>
                                 <button id="startButton">Start Recording</button>
-                                <button id="stopButton" disabled>Stop Recording</button>
                                 <p id="output"></p>
                             </section>
                         </div>
                     </div>
 
                     <!-- Flashcard 2 -->
-			<!-- Flashcard 2 -->
-<div class="flashcard">         
-    <div class="content">
-        <h2>Nutrition Analyzer</h2>
-        <p>Introducing Nutrition Analyzer, your comprehensive tool for understanding and optimizing your dietary habits. Input your daily meals, and let the platform analyze the nutritional content for you. Receive insights into potential deficiencies or excesses in your diet, allowing you to make informed choices for a balanced nutrition plan. Nutrition Analyzer goes beyond simple calorie tracking, providing personalized suggestions to help you achieve your health and wellness goals. Take control of your nutrition and embark on a journey towards a healthier lifestyle with Nutrition Analyzer.</p>
+                    <div class="flashcard">         
+                        <div class="content">
+                            <h2>Nutrition Analyzer</h2>
+                            <p>Introducing Nutrition Analyzer, your comprehensive tool for understanding and optimizing your dietary habits. Input your daily meals, and let the platform analyze the nutritional content for you. Receive insights into potential deficiencies or excesses in your diet, allowing you to make informed choices for a balanced nutrition plan. Nutrition Analyzer goes beyond simple calorie tracking, providing personalized suggestions to help you achieve your health and wellness goals. Take control of your nutrition and embark on a journey towards a healthier lifestyle with Nutrition Analyzer.</p>
 
-        <label for="foodType">Type of Food:</label>
-        <input type="text" id="foodType" name="foodType" placeholder="Enter the type of food">
+                            <label for="foodType">Type of Food:</label>
+                            <input type="text" id="foodType" name="foodType" placeholder="Enter the type of food">
 
-        <label for="amount">Amount Taken:</label>
-        <input type="text" id="amount" name="amount" placeholder="Enter the amount taken">
+                            <label for="amount">Amount Taken:</label>
+                            <input type="text" id="amount" name="amount" placeholder="Enter the amount taken">
 
-        <label for="units">Units:</label>
-        <select id="units" name="units">
-            <option value="grams">Milligrams</option>
-            <option value="kilograms">Grams</option>
-            <option value="milligrams">Ounces</option>
-            <!-- Add more options as needed -->
-        </select>
-    </div>
-</div>
-
-
-
+                            <label for="units">Units:</label>
+                            <select id="units" name="units">
+                                <option value="grams">Milligrams</option>
+                                <option value="kilograms">Grams</option>
+                                <option value="milligrams">Ounces</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                    </div>
 
                     <!-- Flashcard 3 -->
                     <div class="flashcard">         
@@ -266,7 +269,6 @@
     <script>
         // Speech-to-text functionality
         const startButton = document.getElementById('startButton');
-        const stopButton = document.getElementById('stopButton');
         const outputElement = document.getElementById('output');
 
         let recognition;
@@ -280,20 +282,6 @@
                 const transcript = event.results[0][0].transcript;
                 outputElement.textContent = transcript;
             };
-
-            recognition.onend = () => {
-                console.log('Recognition ended.');
-                recognition.stop();
-            };
-
-            startButton.disabled = true;
-            stopButton.disabled = false;
-        });
-
-        stopButton.addEventListener('click', () => {
-            recognition.stop();
-            startButton.disabled = false;
-            stopButton.disabled = true;
         });
     </script>
 </body>
