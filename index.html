@@ -302,6 +302,8 @@
                         <div class="content">
                             <h2>Nutrition Analyzer</h2>
                             <p>Introducing Nutrition Analyzer, your comprehensive tool for understanding and optimizing your dietary habits. Input your daily meals, and let the platform analyze the nutritional content for you. Receive insights into potential deficiencies or excesses in your diet, allowing you to make informed choices for a balanced nutrition plan. Nutrition Analyzer goes beyond simple calorie tracking, providing personalized suggestions to help you achieve your health and wellness goals. Take control of your nutrition and embark on a journey towards a healthier lifestyle with Nutrition Analyzer.</p>
+			    <label for="age">Age:</label>
+            		    <input type="text" id="age" name="age" placeholder="Enter your age">
 
                             <label for="foodType">Type of Food:</label>
                             <input type="text" id="foodType" name="foodType" placeholder="Enter the type of food">
@@ -315,9 +317,11 @@
                                 <option value="kilograms">Grams</option>
                                 <option value="milligrams">Ounces</option>
                             </select>
+			    <button id="submitBtn" onclick="submitForm()">Submit</button>
                             <div class="nutrition-photo">
                                 <img src="https://cdn.techjockey.com/blog/wp-content/uploads/2019/07/05184002/top-recipe-nutrition-calculator-apps-health-fitness.jpg" alt="Nutrition Photo">
                             </div>
+				
                         </div>
                     </div>
 
@@ -339,10 +343,10 @@
                                     <img src="https://drive.google.com/uc?export=view&id=1qIfGVKtAPkE8mBxTkvbcdvT1S7qr69HQ" alt="Team Member 3">
                                     <p>Kashif Ali Khan<br> <a href="https://www.linkedin.com/in/kashif-ali-khan-2812a316b/" style="font-size: 14px; color: #1f2d3d; text-decoration: none;">LinkedIn</a></p>
                                 </div>
-                                <div class="team-member">
+				<div class="team-member">
                                     
-                                    <img src="https://drive.google.com/uc?export=view&id=1qt9xH4WR6sUY2RFgWpg90BLkTthMB2Lv" alt="Team Member 4">
-                                    <p>Hala <br> <a href="https://www.linkedin.com/" style="font-size: 14px; color: #1f2d3d; text-decoration: none;">LinkedIn</a></p>
+                                    <img src="https://drive.google.com/uc?export=view&id=1-253d2WurYfjlXo1EMgxXDrnnT9SL3S8" alt="Nexus Flow Logo">
+                                    <p>Contact Us<br> <a href="mailto:nexusflowtech@gmail.com" style="font-size: 14px; color: #1f2d3d; text-decoration: none;">nexusflowtech@gmail.com</a></p>
                                 </div>
                             </div>
                         </div>
@@ -394,6 +398,10 @@
 
             isRecording = !isRecording; // Toggle recording state
         });
+		function submitForm() {
+            // You can add your logic here to handle form submission
+            		alert('Details Submitted!');
+        }
     </script>
 </body>
 
